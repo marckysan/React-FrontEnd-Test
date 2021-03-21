@@ -62,13 +62,16 @@ class Comparison extends Component {
                     })
                     starshipsArr.forEach(element => 
                         {
-                            axios.get(element).then( response => 
+                            axios.get(element).then( response => {
+                                    const newName = response.data['name'];
+                                    const oldName = this.state.starships;
+                                    const combinedName = newName + "\n" + oldName;
                         
                                     this.setState( {
-                                        starships : this.state.starships + response.data['name'] + "\n "
+                                        starships : combinedName
                                     })
-                                
-                            )
+                            }
+                            ) 
                         }
                     );
                     

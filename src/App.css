@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-image:url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.comicbook.com%2F2019%2F08%2Fstar-wars-new-series-roll-out-1182210-1280x0.jpeg&imgrefurl=https%3A%2F%2Fcomicbook.com%2Fstarwars%2Fnews%2Fnew-star-wars-shorts-adorable-bb-8%2F&tbnid=amprGVsWKplx_M&vet=12ahUKEwiOlPyVy8HvAhVbEysKHZ5mDm8QMyhFegQIARBW..i&docid=I10e2u-GdLunuM&w=1280&h=718&itg=1&q=starwars%20web%20background%20bright&ved=2ahUKEwiOlPyVy8HvAhVbEysKHZ5mDm8QMyhFegQIARBW")
 }
 
 .App-logo {
@@ -51,4 +50,12 @@ input[type=text], select {
 
 .SearchButton:hover {
   background-color: #45a049;
+}
+
+.background {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Mbb98CGTVowcN5BYldG2P3zm9DXgfLknxA&usqp=CAU") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

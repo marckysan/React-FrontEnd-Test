@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div className= {classes.App}>
         <section className = {classes.Appheader}>
+          <h2 className = {classes.headin}g>Star Wars Character Comparison</h2>
           <Comparator />
         </section>
         

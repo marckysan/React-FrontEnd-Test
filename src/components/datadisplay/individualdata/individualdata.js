@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Individualdata.css';
+import classes from './Individualdata.css';
 
 
 const Individualdata = (props) => (
@@ -36,7 +36,9 @@ const Individualdata = (props) => (
             </td>
         </tr>
         <tr>
-            <td style = {
+            <td 
+             className = {classes.lineBreak}
+             style = {
                 {
                     display: props.starships === '' ? 'none' : null
                 }
