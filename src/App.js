@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import Comparator from './containers/Blog/Comparator';
 
 class App extends Component {
   render() {
     return (
-      <div>
-
+      <div className="App">
+        <Comparator />
       </div>
     );
   }
