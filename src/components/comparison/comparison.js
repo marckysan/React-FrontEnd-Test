@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './Comparison.css';
+import classes from './Comparison.css';
 
 import Search from '../Search/Search';
 import SearchData from '../Search/SearchData';
@@ -17,64 +17,76 @@ class Comparison extends Component {
         mass: '',
         hair_color: '',
         homeworld: '', 
-        starships: ''
+        starships: '', 
+        searching: false
     }
 
 
-    callbackFunction = (childData) => {
+    callbackFunction = (childData, searching) => {
          this.setState({ characterQueried:childData })
 
-
-        const nameSearch = childData;
-        const urlSearch = 'https://swapi.dev/api/people/?search=' + nameSearch;
-
-        console.log(urlSearch);
-
-        axios.get(urlSearch).then(
-            response => 
-            {   
-
-                var characterStatsindex = response.data['results'];
-                var charStats = characterStatsindex['0']; 
-                var homeWorld = charStats['homeworld'];    
-                
-                // retrieve data for homeworld 
-                axios.get(homeWorld).then(
-                    reponse => {
-                        var homeworldStatsIndex = response.data['results'];
-                        var homeworldStats = homeworldStatsIndex['0'];
-                        
-                        this.setState({
-                            homeworld : homeworldStats['name']
-                        })
-                    } 
-                )
-                
-                //retrieve data setstate for starships
-                var starshipsArr = charStats['starships'];
-                console.log(starshipsArr);
-                starshipsArr.forEach(element => 
-                    {
-                        axios.get(element).then( response => 
+        if (this.state.characterQueried === '') {
+            return;
+        } else {
+            const nameSearch = childData;
+            const urlSearch = 'https://swapi.dev/api/people/?search=' + nameSearch;
+    
+            console.log(urlSearch);
+    
+            axios.get(urlSearch).then(
+                response => 
+                {   
+    
+                    var characterStatsindex = response.data['results'];
+                    var charStats = characterStatsindex['0']; 
+                    var homeWorld = charStats['homeworld'];    
                     
-                                this.setState( {
-                                    starships : this.state.starships + response.data['name'] + "\n"
-                                })
+                    // retrieve data for homeworld 
+                    axios.get(homeWorld).then(
+                        reponse => {
+                            var homeworldStatsIndex = response.data['results'];
+                            var homeworldStats = homeworldStatsIndex['0'];
                             
-                        )
-                    }
-                );
-                
+                            this.setState({
+                                homeworld : homeworldStats['name']
+                            })
+                        } 
+                    )
+                    
+                    //retrieve data setstate for starships
+                    var starshipsArr = charStats['starships'];
+                    console.log(starshipsArr);
+                    //resets the startship after each search 
+                    this.setState( {
+                        starships: ''
+                    })
+                    starshipsArr.forEach(element => 
+                        {
+                            axios.get(element).then( response => 
+                        
+                                    this.setState( {
+                                        starships : this.state.starships + response.data['name'] + "\n "
+                                    })
+                                
+                            )
+                        }
+                    );
+                    
+    
+                    this.setState({
+                        name : charStats['name'],
+                        gender : charStats['gender'],
+                        height : charStats['height'],
+                        mass : charStats['mass'],
+                        hair_color : charStats['hair_color'],
+                        searching : searching
+                    });
+                }
+            );
+        }
 
-                this.setState({
-                    name : charStats['name'],
-                    gender : charStats['gender'],
-                    height : charStats['height'],
-                    mass : charStats['mass'],
-                    hair_color : charStats['hair_color'],
-                });
-            }
-        );
+
+       
 
     }
 
@@ -84,7 +96,7 @@ class Comparison extends Component {
 
 
         return (
-            <div>
+            <div className = {classes.centraliseContent}>
                 <Search
                     parentCallback = {this.callbackFunction} 
                 />
@@ -96,6 +108,10 @@ class Comparison extends Component {
                         hair_color = {this.state.hair_color}
                         homeworld = {this.state.homeworld}
                         starships = {this.state.starships}
+
+                        searching = {this.state.searching}
+                        
+
                     />
             </div>
         )

@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
 import Comparison from '../../components/comparison/Comparison';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
-import './Comparator.css';
+import classes from './Comparator.css';
 
 class Comparator extends Component {
     render () {
 
         return (
-            <div>
-                <section>
-                    <p>Sidebar</p>
+            <div className={classes.Comparisons}>
+                <section className={classes.Tablediv}>
+                    <Sidebar />
                 </section>
-                <section>
+                <section >
                     <Comparison />
                     <Comparison />
                     <Comparison />

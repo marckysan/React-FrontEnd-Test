@@ -1,13 +1,13 @@
 import React from 'react';
 import Auxilliary from '../../hoc/Auxilliary';
 
-import './Datadisplay.css';
+import classes from './Datadisplay.css';
 
 import Individualdata from '../Datadisplay/Individualdata/Individualdata';
 
 
 const DataDisplay = (props) => (
-    <Auxilliary>
+    <Auxilliary >
         <Individualdata 
             name = {props.name}
             gender = {props.gender}
@@ -16,6 +16,9 @@ const DataDisplay = (props) => (
             hair_color = {props.hair_color}
             homeworld = {props.homeworld}
             starships = {props.starships}
+
+            className ={classes.datadisplay}
+            
         />
     </Auxilliary>
 

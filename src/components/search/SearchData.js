@@ -1,12 +1,18 @@
 import React from 'react';
 
-
+import classes from './SearchData.css';
 
 import Datadisplay from '../Datadisplay/Datadisplay';
 
 const SearchData = (props) => (
-    <div> 
-        <table>
+    <div className = {classes.Tablediv}> 
+        <table 
+            style= {
+                {
+                    display: props.name === '' ? 'none' : null
+                }
+            }    
+        >
             <Datadisplay 
                 name = {props.name}
                 gender = {props.gender} 

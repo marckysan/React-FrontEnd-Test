@@ -36,7 +36,11 @@ const Individualdata = (props) => (
             </td>
         </tr>
         <tr>
-            <td>
+            <td style = {
+                {
+                    display: props.starships === '' ? 'none' : null
+                }
+            }>
                 {props.starships}
             </td>
         </tr>

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
+import classes from './Search.css';
+
 class Search extends Component {
   state = {
-    name: ""
+    name: "",
+    searching: false
   }
 
   onChangeHandler(event) {
@@ -16,7 +19,10 @@ class Search extends Component {
 
   sendData = (e) => {
     e.preventDefault()
-    this.props.parentCallback(this.state.name);
+    this.setState({
+      searching: true
+    });
+    this.props.parentCallback(this.state.name, this.state.searching);
   }
 
 
@@ -32,7 +38,7 @@ class Search extends Component {
       />
       <button
         type="submit"
-        className="SearchButton"
+        className={classes.SearchButton}
         onClick = {(e) => this.sendData(e)}>
         Search
       </button>
