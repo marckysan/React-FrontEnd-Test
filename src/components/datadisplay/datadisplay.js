@@ -1,13 +1,24 @@
 import React from 'react';
+import Auxilliary from '../../hoc/Auxilliary';
 
-import './comparison.css';
+import './Datadisplay.css';
 
-import search from '../search/search';
+import Individualdata from '../Datadisplay/Individualdata/Individualdata';
 
-const comparison = (props) => (
-    <table>
-        <p>individualdata here</p>
-    </table>
+
+const DataDisplay = (props) => (
+    <Auxilliary>
+        <Individualdata 
+            name = {props.name}
+            gender = {props.gender}
+            height = {props.height}
+            mass = {props.mass}
+            hair_color = {props.hair_color}
+            homeworld = {props.homeworld}
+            starships = {props.starships}
+        />
+    </Auxilliary>
+
 );
 
-export default comparison;
+export default DataDisplay;

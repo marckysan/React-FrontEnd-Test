@@ -1,18 +1,45 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
 
-const Search = ({ onChange, onSubmit, value }) =>
-<form onSubmit={onSubmit}>
-  <input
-    type="text"
-    value={value}
-    onChange={onChange}
-  />
-  <button
-    type="submit"
-    className="SearchButton">
-    Search
-  </button>
-</form>
+class Search extends Component {
+  state = {
+    name: ""
+  }
 
-export default Search
+  onChangeHandler(event) {
+    var name = this.state.name;
+    var newName = event.target.value;
+    name = newName;
+
+    this.setState({ name : name });
+    console.log(this.state.name)
+  }
+
+  sendData = (e) => {
+    e.preventDefault()
+    this.props.parentCallback(this.state.name);
+  }
+
+
+
+
+  render() {
+    return (
+    <form>
+      <input
+        type="text"
+        value={this.state.name}
+        onChange={this.onChangeHandler.bind(this)}
+      />
+      <button
+        type="submit"
+        className="SearchButton"
+        onClick = {(e) => this.sendData(e)}>
+        Search
+      </button>
+    </form>
+    )
+  }
+}
+
+
+export default Search;

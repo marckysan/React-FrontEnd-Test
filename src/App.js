@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Comparator from './containers/Blog/Comparator';
+import Comparator from './containers/Comparator/Comparator';
 
 class App extends Component {
   render() {

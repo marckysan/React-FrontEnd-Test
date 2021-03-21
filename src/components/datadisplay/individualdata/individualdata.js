@@ -1,15 +1,46 @@
 import React from 'react';
 
-import './individualdata.css';
+import './Individualdata.css';
 
-import search from '../search/search';
 
-const comparison = (props) => (
-    <tr>
-        <td>
-            <p>Data Here</p>
-        </td>
-    </tr>
+const Individualdata = (props) => (
+    <tbody>
+        <tr>
+            <td>
+                {props.name}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.gender}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.height}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.mass}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.hair_color}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.homeworld}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {props.starships}
+            </td>
+        </tr>
+    </tbody>
 );
 
-export default comparison;
+export default Individualdata;

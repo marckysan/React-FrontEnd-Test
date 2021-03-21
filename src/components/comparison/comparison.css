@@ -1,4 +1,7 @@
 .Comparison {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100px;
     padding: 16px;
     text-align: center;
